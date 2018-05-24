@@ -1,0 +1,100 @@
+.centeredTextArea .scroll-pane .content .text {
+    -fx-text-alignment: center;
+}
+
+.button {
+    -fx-background-color:
+            #090a0c,
+            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+            linear-gradient(#20262b, #191d22),
+            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 15px;
+    -fx-padding: 10 20 10 20;
+}
+
+.table-row-cell {
+    -fx-cell-size: 50px;
+}
+
+/*Style of entire tableView*/
+  .table-view{
+      /*-fx-background-color: transparent;*/
+  }
+
+/*Style of entire tableView when is getting focused*/
+  .table-view:focused{
+      /*-fx-background-color: transparent;*/
+  }
+
+
+
+/*Style of each column header in the tableView*/
+  .table-view .column-header {
+      -fx-background-color: transparent;
+  }
+
+/*Style of each column header's background in the tableView*/
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#131313 0.0%, #424141 100.0%);
+}
+
+/*Style of each column header's label  in the tableView*/
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-font-weight:bold;
+    -fx-text-fill: white;
+    -fx-font-size:18px;
+}
+
+/*Style of each column in the tableView*/
+  .table-view .table-column{
+      -fx-alignment:center;
+  }
+
+/*Style of each table cell*/
+  .table-view .table-cell{
+      -fx-font-weight:bold;
+      -fx-font-size:15px;
+      /* -fx-text-fill:orange; */
+
+  }
+
+/*Style of each entire row in the table view*/
+  .table-row-cell:selected {
+      -fx-border-color:transparent firebrick transparent firebrick  ;
+       -fx-border-width:2.0;
+  }
+
+
+/*Style of each entire row in the table view when is hovered*/
+  .table-row-cell:hover {
+      -fx-background-color:#C2C2C2;
+  }
+
+/*Style of each entire row in the table view when is getting focused*/
+  .table-row-cell:focused {
+      -fx-background-color:purple;
+  }
+
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow,
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
