@@ -33,7 +33,7 @@ public class LoginController implements Initializable {
         if(passwordTextfield.getText().isEmpty()){
             emptyPasswdAlert.setVisible(true);
         }else {
-            File file = new File("src/main/java/content.txt");
+            File file = new File("./content.txt");
             Scanner scanner = new Scanner(file);
 
             if(scanner.hasNext()) {
