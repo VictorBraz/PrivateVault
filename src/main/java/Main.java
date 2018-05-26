@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +15,7 @@ public class Main extends Application {
 
         this.primaryStage = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("resources/LoginView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/LoginView.fxml"));
         this.primaryStage.setTitle("PrivateVault");
         this.primaryStage.setHeight(700);
         this.primaryStage.setWidth(1024);

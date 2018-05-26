@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,7 +44,7 @@ public class PKListViewController implements Initializable {
 
     @FXML
     public void newKey(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/NewKey.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/NewKey.fxml"));
         Scene scene = new Scene(root,1024,700);
 
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -67,7 +69,7 @@ public class PKListViewController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     PrivateKeyModel rowData = row.getItem();
-                    // create clipboard content
+                    // create clipboard content.txt
                     final ClipboardContent clipboardContent = new ClipboardContent();
                     clipboardContent.putString(rowData.getPrivateKey());
                     Clipboard.getSystemClipboard().setContent(clipboardContent);
@@ -79,7 +81,7 @@ public class PKListViewController implements Initializable {
     }
 
     public void signOut(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/LoginView.fxml"));
         Scene scene = new Scene(root,1024,700);
 
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();

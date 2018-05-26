@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.TablePosition;
@@ -95,11 +97,11 @@ public class TableUtils {
             prevRow = row;
         }
 
-        // create clipboard content
+        // create clipboard content.txt
         final ClipboardContent clipboardContent = new ClipboardContent();
         clipboardContent.putString(clipboardString.toString());
 
-        // set clipboard content
+        // set clipboard content.txt
         Clipboard.getSystemClipboard().setContent(clipboardContent);
     }
 }

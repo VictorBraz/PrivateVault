@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +48,7 @@ public class NewKeyController implements Initializable {
 
             writerReader.WriteToFile(pkList);
 
-            Parent root = FXMLLoader.load(getClass().getResource("/PKListView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/main/resources/PKListView.fxml"));
             Scene scene = new Scene(root,1024,700);
 
             Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -58,7 +60,7 @@ public class NewKeyController implements Initializable {
     }
 
     public void back(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/PKListView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/PKListView.fxml"));
         Scene scene = new Scene(root,1024,700);
 
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();

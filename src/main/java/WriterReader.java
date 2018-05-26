@@ -1,4 +1,4 @@
-/**
+package main.java; /**
  * @author Victor Machado Braz.
  * Created on 16/05/2018.
  */
@@ -19,7 +19,7 @@ public class WriterReader {
     public void WriteToFile (ArrayList<PrivateKeyModel> privateKeyList) throws Exception{
 
         try {
-            FileOutputStream file = new FileOutputStream("resources");
+            FileOutputStream file = new FileOutputStream("src/main/java/resources");
             ObjectOutputStream o = new ObjectOutputStream(file);
 
             // Write objects to file
@@ -44,7 +44,7 @@ public class WriterReader {
     public ArrayList<PrivateKeyModel> ReadFromFile(){
 
         try {
-            FileInputStream fi = new FileInputStream("resources");
+            FileInputStream fi = new FileInputStream("src/main/java/resources");
             ObjectInputStream oi = new ObjectInputStream(fi);
 
             while(true){
@@ -70,7 +70,7 @@ public class WriterReader {
 
     public void WriteContent(String content) {
 
-        File file = new File("content");
+        File file = new File("src/main/java/content.txt");
 
         BufferedWriter bw = null;
         FileWriter fw = null;

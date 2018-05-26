@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,14 +33,14 @@ public class LoginController implements Initializable {
         if(passwordTextfield.getText().isEmpty()){
             emptyPasswdAlert.setVisible(true);
         }else {
-            File file = new File("content");
+            File file = new File("src/main/java/content.txt");
             Scanner scanner = new Scanner(file);
 
             if(scanner.hasNext()) {
                 Boolean authenticated = BCrypt.checkpw(passwordTextfield.getText(), scanner.nextLine());
 
                 if (authenticated){
-                    Parent root = FXMLLoader.load(getClass().getResource("/PKListView.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/main/resources/PKListView.fxml"));
                     Scene scene = new Scene(root,1024,700);
 
                     Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -53,14 +55,13 @@ public class LoginController implements Initializable {
                 newAccLabel.setVisible(true);
             }
         }
-
     }
 
     @FXML
     public void CreateAccount(ActionEvent event) throws Exception{
 
         newAccLabel.setVisible(false);
-        Parent root = FXMLLoader.load(getClass().getResource("/Disclaimer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/Disclaimer.fxml"));
         Scene scene = new Scene(root,1024,700);
 
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -73,7 +74,7 @@ public class LoginController implements Initializable {
     }
 
     public void Donate(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/DonateView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/DonateView.fxml"));
         Scene scene = new Scene(root,1024,700);
 
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();

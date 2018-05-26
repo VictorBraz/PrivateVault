@@ -1,3 +1,5 @@
+package main.java;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +38,7 @@ public class DisclaimerController implements Initializable {
 
     @FXML
     private void handleDisagreeButton(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/LoginView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/LoginView.fxml"));
         Scene scene = new Scene(root,1024,700);
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         primaryStage.setScene(scene);
@@ -44,7 +46,7 @@ public class DisclaimerController implements Initializable {
 
     @FXML
     private void handleAgreeButton(ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/SingUp.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/SingUp.fxml"));
         Scene scene = new Scene(root,1024,700);
         Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         primaryStage.setScene(scene);
