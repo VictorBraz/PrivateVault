@@ -16,7 +16,9 @@ import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 
 public class PKListViewController implements Initializable {
 
@@ -26,20 +28,25 @@ public class PKListViewController implements Initializable {
     @FXML Button newKeyBtn;
 
     private ObservableList<PrivateKeyModel> privateKeyModelList;
-    private WriterReader writerReader;
+    //private WriterReader writerReader;
     private TableUtils tableUtils;
+    private Preferences prefs = Preferences.userNodeForPackage(getClass());
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        writerReader = new WriterReader();
+        //writerReader = new WriterReader();
         tableUtils = new TableUtils();
+        try {
+            privateKeyModelList = FXCollections.observableArrayList((ArrayList<PrivateKeyModel>) PrefObj.getObject(prefs, "List"));
+            //privateKeyModelList = FXCollections.observableArrayList(writerReader.ReadFromFile());
+            if (!privateKeyModelList.isEmpty())
+                showTable();
+            else
+                System.out.println("List is empty");
+        }catch (Exception e){
 
-        privateKeyModelList = FXCollections.observableArrayList(writerReader.ReadFromFile());
-        if(!privateKeyModelList.isEmpty())
-            showTable();
-        else
-            System.out.println("List is empty");
+        }
     }
 
     @FXML

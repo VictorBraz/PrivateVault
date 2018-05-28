@@ -14,14 +14,13 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 
 public class SingUpController implements Initializable {
     @FXML private PasswordField newPasswordField;
     @FXML private PasswordField rePasswordField;
     @FXML private Label emptyFieldLabel;
     @FXML private Label noMatchLabel;
-
-    private WriterReader writer;
 
     @FXML
     private void createAccount(ActionEvent event) throws Exception{
@@ -30,14 +29,15 @@ public class SingUpController implements Initializable {
         if (!newPasswordField.getText().isEmpty() && !rePasswordField.getText().isEmpty()){
             if (newPasswordField.getText().equals(rePasswordField.getText())){
 
-                writer = new WriterReader();
-
                 String encrypted = BCrypt.hashpw(newPasswordField.getText(), BCrypt.gensalt());
 
-                writer.WriteContent(encrypted);
+                Preferences preferences = Preferences.userNodeForPackage(getClass());
+
+                PrefObj.putObject(preferences, "Password", encrypted);
 
                 ArrayList<PrivateKeyModel> newList = new ArrayList<>();
-                writer.WriteToFile(newList);
+
+                PrefObj.putObject(preferences, "List", newList);
 
                 Parent root = FXMLLoader.load(getClass().getResource("/main/resources/LoginView.fxml"));
                 Scene scene = new Scene(root,1024,700);

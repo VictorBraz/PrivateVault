@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 
 public class NewKeyController implements Initializable {
 
@@ -22,7 +23,7 @@ public class NewKeyController implements Initializable {
     @FXML Label emptyFields;
 
     private PrivateKeyModel privateKeyModel;
-    private WriterReader writerReader;
+    //private WriterReader writerReader;
     private ArrayList<PrivateKeyModel> pkList;
 
     @Override
@@ -34,19 +35,24 @@ public class NewKeyController implements Initializable {
     public void addNewKey(ActionEvent event) throws Exception{
 
         if(!coinNameField.getText().isEmpty() && !privateKeyfield.getText().isEmpty()){
+            Preferences prefs = Preferences.userNodeForPackage(getClass());
+
             pkList = new ArrayList<>();
             emptyFields.setVisible(false);
 
             privateKeyModel = new PrivateKeyModel();
-            writerReader = new WriterReader();
+            //writerReader = new WriterReader();
 
             privateKeyModel.setCoin(coinNameField.getText());
             privateKeyModel.setPrivateKey(privateKeyfield.getText());
 
-            pkList = writerReader.ReadFromFile();
+            //pkList = writerReader.ReadFromFile();
+            pkList = (ArrayList<PrivateKeyModel>) PrefObj.getObject(prefs, "List");
             pkList.add(privateKeyModel);
 
-            writerReader.WriteToFile(pkList);
+            //writerReader.WriteToFile(pkList);
+            PrefObj.putObject(prefs, "List", pkList);
+            System.out.println("List: "+ pkList.toString());
 
             Parent root = FXMLLoader.load(getClass().getResource("/main/resources/PKListView.fxml"));
             Scene scene = new Scene(root,1024,700);

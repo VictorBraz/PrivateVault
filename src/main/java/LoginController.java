@@ -15,6 +15,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.prefs.Preferences;
 
 public class LoginController implements Initializable {
 
@@ -33,11 +34,13 @@ public class LoginController implements Initializable {
         if(passwordTextfield.getText().isEmpty()){
             emptyPasswdAlert.setVisible(true);
         }else {
-            File file = new File("./content.txt");
-            Scanner scanner = new Scanner(file);
+            //File file = new File("./content.txt");
+            //Scanner scanner = new Scanner(file);
+            Preferences prefs = Preferences.userNodeForPackage(getClass());
+            String hashed = (String) PrefObj.getObject(prefs, "Password");
 
-            if(scanner.hasNext()) {
-                Boolean authenticated = BCrypt.checkpw(passwordTextfield.getText(), scanner.nextLine());
+            if(hashed != null) {
+                Boolean authenticated = BCrypt.checkpw(passwordTextfield.getText(), hashed);
 
                 if (authenticated){
                     Parent root = FXMLLoader.load(getClass().getResource("/main/resources/PKListView.fxml"));

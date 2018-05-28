@@ -4,6 +4,7 @@ package main.java; /**
  */
 import java.io.*;
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 public class WriterReader {
 
@@ -68,9 +69,13 @@ public class WriterReader {
         return privateList;
     }
 
-    public void WriteContent(String content) {
+    public void WriteContent(String content) throws Exception{
 
-        File file = new File("content.txt");
+        Preferences preferences = Preferences.userNodeForPackage(getClass());
+
+        PrefObj.putObject(preferences, "Password", content);
+
+        /*File file = new File("content.txt");
 
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -92,7 +97,7 @@ public class WriterReader {
                 ex.printStackTrace();
             }
 
-        }
+        }*/
     }
 
 }
