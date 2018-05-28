@@ -32,8 +32,9 @@
                              <TableColumn fx:id="privateKey" minWidth="0.0" prefWidth="697.0" style="-fx-alignment: CENTER" styleClass="table-column" text="Private Key (Double-click to copy)" />
                          </columns>
                      </TableView>
-                    <Button fx:id="newKeyBtn" layoutX="435.0" layoutY="617.0" mnemonicParsing="false" onAction="#newKey" text="New Private Key" />
+                    <Button fx:id="newKeyBtn" layoutX="642.0" layoutY="617.0" mnemonicParsing="false" onAction="#newKey" text="New Private Key" />
                     <Button alignment="CENTER" layoutX="900.0" layoutY="38.0" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
+                    <Button fx:id="deleteButton" layoutX="256.0" layoutY="617.0" mnemonicParsing="false" text="Delete Key" />
                 </Pane>
             </children>
         </Pane>

@@ -26,6 +26,8 @@ public class PKListViewController implements Initializable {
     @FXML TableColumn coin;
     @FXML TableColumn privateKey;
     @FXML Button newKeyBtn;
+    @FXML Button deleteButton;
+
 
     private ObservableList<PrivateKeyModel> privateKeyModelList;
     //private WriterReader writerReader;
@@ -58,7 +60,7 @@ public class PKListViewController implements Initializable {
         primaryStage.setScene(scene);
     }
 
-    private void showTable() {
+    private void showTable(){
         tableView.getSelectionModel().setCellSelectionEnabled(true);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
@@ -76,7 +78,6 @@ public class PKListViewController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     PrivateKeyModel rowData = row.getItem();
-                    // create clipboard content.txt
                     final ClipboardContent clipboardContent = new ClipboardContent();
                     clipboardContent.putString(rowData.getPrivateKey());
                     Clipboard.getSystemClipboard().setContent(clipboardContent);
@@ -85,6 +86,18 @@ public class PKListViewController implements Initializable {
             return row ;
         });
         tableUtils.installCopyPasteHandler(tableView);
+
+        deleteButton.setOnAction(e -> {
+            PrivateKeyModel selectedItem = tableView.getSelectionModel().getSelectedItem();
+            tableView.getItems().remove(selectedItem);
+            privateKeyModelList.remove(selectedItem);
+            try {
+                ArrayList<PrivateKeyModel> list = new ArrayList<>(privateKeyModelList);
+                PrefObj.putObject(prefs, "List", list);
+            }catch (Exception exp){
+                exp.printStackTrace();
+            }
+        });
     }
 
     public void signOut(ActionEvent event) throws Exception{
