@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -20,6 +21,7 @@ public class Main extends Application {
         this.primaryStage.setHeight(700);
         this.primaryStage.setWidth(1024);
         this.primaryStage.setScene(new Scene(root, 300, 275));
+        this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon1024x1024.png")));
         this.primaryStage.show();
     }
 
