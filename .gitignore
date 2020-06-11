@@ -1,4 +1,4 @@
 .idea
 out
-PrivateVault.iml
+*.iml
 .DS_Store
